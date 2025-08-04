@@ -616,19 +616,16 @@ function voltarAoPortal() {
         currentPage: window.location.href
     });
     
-    // In production, this would navigate to the actual portal
-    // For now, we'll show a confirmation dialog
-    const confirmReturn = confirm('Deseja realmente voltar ao Portal SILIC 2.0?');
+    // Redirecionar para o Portal de Imóveis
+    const confirmReturn = confirm('Deseja realmente voltar ao Portal de Imóveis?');
     
     if (confirmReturn) {
-        // Simulate navigation to portal
-        // In production: window.location.href = '/portal';
-        Utils.showAlert('Redirecionando para o Portal SILIC 2.0...', 'info', 2000);
+        // Redirecionar para o portal de imóveis
+        Utils.showAlert('Redirecionando para o Portal de Imóveis...', 'info', 1500);
         
         setTimeout(() => {
-            // In a real scenario, this would be a redirect
-            console.log('Navegando para: /portal/silic');
-        }, 2000);
+            window.location.href = 'https://osvaldojeronymo.github.io/silic-portal-imoveis/';
+        }, 1500);
     }
 }
 

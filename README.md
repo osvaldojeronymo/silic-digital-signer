@@ -1,4 +1,4 @@
-# SILIC Digital Signer
+# SILIC Digital Signer (Assinador Digital)
 
 Portal de Assinatura Digital seguindo as melhores práticas internacionais de desenvolvimento web.
 
@@ -6,7 +6,11 @@ Portal de Assinatura Digital seguindo as melhores práticas internacionais de de
 
 **Acesse o protótipo funcionando:** [https://osvaldojeronymo.github.io/silic-digital-signer/](https://osvaldojeronymo.github.io/silic-digital-signer/)
 
+**Portal Principal (Imóveis):** [https://osvaldojeronymo.github.io/silic-portal-imoveis/](https://osvaldojeronymo.github.io/silic-portal-imoveis/)
+
 > 📝 **Nota:** Este é um protótipo para demonstração. Em ambiente de produção, seria integrado com APIs reais de assinatura digital e certificação.
+> 
+> 🔗 **Integração:** O botão "Voltar ao Portal de Imóveis" redireciona automaticamente para o portal principal.
 
 ## 🌟 Características
 

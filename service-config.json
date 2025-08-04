@@ -1,0 +1,19 @@
+{
+  "serviceName": "Assinador Digital",
+  "serviceDescription": "Portal de Assinatura Digital SILIC 2.0",
+  "serviceUrl": "https://osvaldojeronymo.github.io/silic-digital-signer/",
+  "portalReturnUrl": "https://osvaldojeronymo.github.io/silic-portal-imoveis/",
+  "version": "2.0",
+  "category": "digital-signature",
+  "icon": "fas fa-file-signature",
+  "status": "active",
+  "features": [
+    "Múltiplos documentos",
+    "Múltiplos signatários", 
+    "Assinatura sequencial",
+    "Internacionalização",
+    "Design responsivo",
+    "Acessibilidade WCAG 2.1"
+  ],
+  "lastUpdated": "2025-08-04T00:00:00Z"
+}

@@ -51,6 +51,7 @@ class I18nManager {
             'pt-BR': {
                 'skip-to-content': 'Pular para o conteúdo principal',
                 'app-title': 'SILIC Digital Signer',
+                'service-name': 'Assinador Digital',
                 'portal-title': 'Portal de Assinatura Digital',
                 'portal-description': 'Assine seus documentos de forma segura e digital com certificação válida.',
                 'select-document': 'Selecione o documento:',
@@ -121,6 +122,7 @@ class I18nManager {
             'en-US': {
                 'skip-to-content': 'Skip to main content',
                 'app-title': 'SILIC Digital Signer',
+                'service-name': 'Digital Signer',
                 'portal-title': 'Digital Signature Portal',
                 'portal-description': 'Sign your documents securely and digitally with valid certification.',
                 'select-document': 'Select document:',
@@ -191,6 +193,7 @@ class I18nManager {
             'es-ES': {
                 'skip-to-content': 'Saltar al contenido principal',
                 'app-title': 'SILIC Digital Signer',
+                'service-name': 'Firmador Digital',
                 'portal-title': 'Portal de Firma Digital',
                 'portal-description': 'Firme sus documentos de forma segura y digital con certificación válida.',
                 'select-document': 'Seleccionar documento:',
