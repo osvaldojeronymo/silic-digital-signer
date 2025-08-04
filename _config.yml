@@ -1,0 +1,31 @@
+# Configuração para GitHub Pages
+title: "SILIC Digital Signer"
+description: "Portal de Assinatura Digital SILIC 2.0 - Protótipo"
+url: "https://osvaldojeronymo.github.io"
+baseurl: "/silic-digital-signer"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude arquivos do build
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - .eslintrc.js
+  - .htmlvalidate.json
+  - .stylelintrc.js
+  - README.md
+  - .gitignore
+
+# Include arquivos específicos
+include:
+  - assets/
+  - css/
+  - js/

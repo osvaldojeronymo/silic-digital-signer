@@ -2,6 +2,12 @@
 
 Portal de Assinatura Digital seguindo as melhores práticas internacionais de desenvolvimento web.
 
+## 🌐 Demo Online
+
+**Acesse o protótipo funcionando:** [https://osvaldojeronymo.github.io/silic-digital-signer/](https://osvaldojeronymo.github.io/silic-digital-signer/)
+
+> 📝 **Nota:** Este é um protótipo para demonstração. Em ambiente de produção, seria integrado com APIs reais de assinatura digital e certificação.
+
 ## 🌟 Características
 
 ### ✅ Acessibilidade (WCAG 2.1 AA)
