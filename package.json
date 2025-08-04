@@ -1,0 +1,81 @@
+{
+  "name": "silic-digital-signer",
+  "version": "1.0.0",
+  "description": "SILIC Digital Signer - Portal de Assinatura Digital seguindo melhores práticas internacionais",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 3000 -c-1",
+    "dev": "live-server --port=3000 --host=localhost --open=/",
+    "build": "npm run minify-css && npm run minify-js",
+    "minify-css": "cleancss -o dist/css/style.min.css css/style.css",
+    "minify-js": "uglifyjs js/*.js -m -c -o dist/js/bundle.min.js",
+    "test": "npm run test:html && npm run test:css && npm run test:js && npm run test:accessibility",
+    "test:html": "html-validate index.html",
+    "test:css": "stylelint css/*.css",
+    "test:js": "eslint js/*.js",
+    "test:accessibility": "pa11y http://localhost:3000",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:html": "html-validate index.html",
+    "lint:css": "stylelint css/*.css --fix",
+    "lint:js": "eslint js/*.js --fix",
+    "analyze": "webpack-bundle-analyzer dist/js/bundle.min.js",
+    "lighthouse": "lighthouse http://localhost:3000 --output html --output-path ./reports/lighthouse-report.html",
+    "security": "nsp check"
+  },
+  "keywords": [
+    "digital-signature",
+    "document-signing",
+    "accessibility",
+    "responsive",
+    "pwa",
+    "caixa",
+    "silic"
+  ],
+  "author": "CAIXA - SILIC 2.0 Team",
+  "license": "PROPRIETARY",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caixa/silic-digital-signer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caixa/silic-digital-signer/issues"
+  },
+  "homepage": "https://silic.caixa.gov.br",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "babel-loader": "^9.1.0",
+    "clean-css-cli": "^5.6.0",
+    "eslint": "^8.42.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-accessibility": "^5.0.0",
+    "html-validate": "^8.0.0",
+    "http-server": "^14.1.0",
+    "lighthouse": "^10.2.0",
+    "live-server": "^1.2.2",
+    "pa11y": "^6.2.3",
+    "stylelint": "^15.7.0",
+    "stylelint-config-standard": "^33.0.0",
+    "uglify-js": "^3.17.0",
+    "webpack": "^5.88.0",
+    "webpack-bundle-analyzer": "^4.9.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost"
+  }
+}
