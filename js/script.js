@@ -610,22 +610,34 @@ Em um ambiente de produção, este seria o relatório real do processo de assina
  * Navigation function for portal return
  */
 function voltarAoPortal() {
-    // Track the navigation event
-    Utils.trackEvent('voltar_portal_clicked', {
-        timestamp: new Date().toISOString(),
-        currentPage: window.location.href
-    });
+    console.log('voltarAoPortal function called');
     
-    // Redirecionar para o Portal de Imóveis
-    const confirmReturn = confirm('Deseja realmente voltar ao Portal de Imóveis?');
-    
-    if (confirmReturn) {
-        // Redirecionar para o portal de imóveis
-        Utils.showAlert('Redirecionando para o Portal de Imóveis...', 'info', 1500);
+    try {
+        // Redirecionar diretamente para o Portal de Imóveis
+        console.log('Starting redirect process...');
         
-        setTimeout(() => {
+        // Try different redirect methods
+        if (confirm('Deseja realmente voltar ao Portal de Imóveis?')) {
+            console.log('User confirmed, redirecting...');
+            
+            // Method 1: Direct assignment
             window.location.href = 'https://osvaldojeronymo.github.io/silic-portal-imoveis/';
-        }, 1500);
+            
+            // Method 2: Fallback using replace (in case above doesn't work)
+            setTimeout(() => {
+                window.location.replace('https://osvaldojeronymo.github.io/silic-portal-imoveis/');
+            }, 1000);
+            
+            // Method 3: Last resort - open in new tab
+            setTimeout(() => {
+                window.open('https://osvaldojeronymo.github.io/silic-portal-imoveis/', '_blank');
+            }, 2000);
+        }
+        
+    } catch (error) {
+        console.error('Error in voltarAoPortal:', error);
+        alert('Erro ao tentar redirecionar. Abrindo em nova aba...');
+        window.open('https://osvaldojeronymo.github.io/silic-portal-imoveis/', '_blank');
     }
 }
 
