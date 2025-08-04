@@ -1,0 +1,20 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs e cache
+*.log
+*.tmp
+*.swp
+
+# Dependências (se usar Node no futuro)
+node_modules/
+
+# Build/output
+dist/
+build/
+
+# Configurações de IDE
+.vscode/
+.idea/
+*.code-workspace
