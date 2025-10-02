@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal de Assinatura Digital SILIC 2.0 - Sistema seguro para assinatura eletrônica de documentos">
+    <meta name="keywords" content="assinatura digital, documento eletrônico, SILIC, segurança">
+    <meta name="author" content="CAIXA - SILIC 2.0">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SILIC Digital Signer">
+    <meta property="og:description" content="Portal de Assinatura Digital SILIC 2.0">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://osvaldojeronymo.github.io;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <title>SILIC 2.0 - Assinador Digital</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo-caixa.svg">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="skip-to-content">Pular para o conteúdo principal</a>
+    
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="assets/images/logo-caixa.svg" alt="Caixa" class="logo">
+                </div>
+                <div class="nav-text">
+                    <h1 class="system-title">SILIC 2.0</h1>
+                    <p class="system-subtitle">Protótipo - Assinador Digital</p>
+                </div>
+                <div class="nav-actions">
+                    <button id="voltarPortalBtn" class="btn-voltar-portal" onclick="voltarAoPortal()">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar ao Portal de Imóveis
+                    </button>
+                </div>
+            </div>
+        </nav>      
+    </header>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading hidden" aria-hidden="true">
+        <div class="spinner" aria-label="Carregando..."></div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container" role="main">
+        <!-- Error/Success Messages -->
+        <div id="alert-container" class="alert-container" aria-live="polite" role="alert"></div>
+        
+        <section class="card">
+            <h2 data-i18n="portal-title">Portal de Assinatura Digital</h2>
+            <p class="description" data-i18n="portal-description">
+                Assine seus documentos de forma segura e digital com certificação válida.
+            </p>
+            
+            <form id="signForm" novalidate aria-labelledby="portal-title">
+                <!-- Multiple Documents Section -->
+                <div class="form-group">
+                    <label for="docUpload" data-i18n="select-documents">Selecione os documentos:</label>
+                    <input 
+                        type="file" 
+                        id="docUpload" 
+                        name="docUpload" 
+                        accept=".pdf,.docx,.txt" 
+                        required 
+                        multiple
+                        aria-describedby="doc-help"
+                        class="file-input"
+                    >
+                    <small id="doc-help" class="help-text" data-i18n="doc-help">
+                        Formatos aceitos: PDF, DOCX, TXT (máximo 10MB por arquivo, até 10 arquivos)
+                    </small>
+                    <div class="error-message" id="docUpload-error" role="alert"></div>
+                    
+                    <!-- Selected Files Preview -->
+                    <div id="selectedFiles" class="selected-files hidden">
+                        <h4>Documentos Selecionados:</h4>
+                        <ul id="filesList" class="files-list"></ul>
+                        <button type="button" id="clearFiles" class="btn-clear">
+                            <i class="fas fa-times"></i> Limpar Todos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Multiple Signers Section -->
+                <div class="form-group">
+                    <label for="signers" data-i18n="signers">Signatários:</label>
+                    <div id="signersContainer" class="signers-container">
+                        <div class="signer-item" data-signer-index="0">
+                            <div class="signer-input-group">
+                                <input 
+                                    type="text" 
+                                    name="signerName[]" 
+                                    required 
+                                    minlength="3"
+                                    maxlength="100"
+                                    autocomplete="name"
+                                    placeholder="Digite o nome completo do signatário"
+                                    class="signer-name-input"
+                                >
+                                <input 
+                                    type="email" 
+                                    name="signerEmail[]" 
+                                    required 
+                                    autocomplete="email"
+                                    placeholder="Digite o e-mail do signatário"
+                                    class="signer-email-input"
+                                >
+                                <select name="signerRole[]" class="signer-role-select" required>
+                                    <option value="">Selecione o papel</option>
+                                    <option value="assinante">Assinante</option>
+                                    <option value="testemunha">Testemunha</option>
+                                    <option value="aprovador">Aprovador</option>
+                                    <option value="revisor">Revisor</option>
+                                </select>
+                                <button type="button" class="btn-remove-signer" title="Remover signatário">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="signer-errors">
+                                <div class="error-message" role="alert"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="addSigner" class="btn-add-signer">
+                        <i class="fas fa-plus"></i> Adicionar Signatário
+                    </button>
+                    
+                    <small class="help-text" data-i18n="signers-help">
+                        Adicione todos os signatários que devem assinar os documentos. Mínimo 1, máximo 10 signatários.
+                    </small>
+                </div>
+
+                <!-- Signing Order Options -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="sequentialSigning" name="sequentialSigning">
+                        <span class="checkmark"></span>
+                        Assinatura sequencial (signatários devem assinar em ordem)
+                    </label>
+                    <small class="help-text">
+                        Se marcado, os signatários receberão convites para assinar na ordem listada acima.
+                    </small>
+                </div>
+
+                <!-- Document Assignment (Advanced Feature) -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enableDocumentAssignment" name="enableDocumentAssignment">
+                        <span class="checkmark"></span>
+                        Configurar quais documentos cada signatário deve assinar
+                    </label>
+                    
+                    <div id="documentAssignmentContainer" class="document-assignment-container hidden">
+                        <small class="help-text">
+                            Por padrão, todos os signatários assinarão todos os documentos. Use esta opção para configuração avançada.
+                        </small>
+                        <div id="assignmentMatrix" class="assignment-matrix">
+                            <!-- Will be populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" data-i18n="sign-button">
+                    <span class="btn-text">Iniciar Processo de Assinatura</span>
+                    <span class="btn-spinner hidden" aria-hidden="true"></span>
+                </button>
+            </form>
+        </section>
+
+        <section id="result" class="card hidden" role="region" aria-labelledby="result-title">
+            <h3 id="result-title" data-i18n="result-title">Resultado da Assinatura</h3>
+            <div id="resultContent" class="result-content">
+                <p id="resultMessage"></p>
+                <div class="result-actions">
+                    <button type="button" id="downloadBtn" class="btn-secondary hidden" data-i18n="download-document">
+                        Baixar Documento Assinado
+                    </button>
+                    <button type="button" id="newSignBtn" class="btn-outline" data-i18n="new-signature">
+                        Nova Assinatura
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 SILIC 2.0 - <span data-i18n="prototype">Protótipo</span></p>
+                <div class="footer-links">
+                    <a href="#privacy" data-i18n="privacy-policy">Política de Privacidade</a>
+                    <a href="#terms" data-i18n="terms-of-use">Termos de Uso</a>
+                    <a href="#help" data-i18n="help">Ajuda</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/i18n.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
