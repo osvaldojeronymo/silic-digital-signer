@@ -1,285 +1,219 @@
-# SILIC Digital Signer (Assinador Digital)
+# SILIC Digital Signer Unified
 
-Portal de Assinatura Digital seguindo as melhores práticas internacionais de desenvolvimento web.
+![Deploy Status](https://github.com/osvaldojeronymo/silic-digital-signer/actions/workflows/deploy.yml/badge.svg)
 
-## 🌐 Demo Online
+Portal unificado de Assinatura Digital SILIC 2.0 - Combinando as melhores práticas dos projetos original e moderno.
 
-**Acesse o protótipo funcionando:** [https://osvaldojeronymo.github.io/silic-digital-signer/](https://osvaldojeronymo.github.io/silic-digital-signer/)
+## 🚀 Sobre o Projeto
 
-**Portal Principal (Imóveis):** [https://osvaldojeronymo.github.io/silic-portal-imoveis/](https://osvaldojeronymo.github.io/silic-portal-imoveis/)
+Este projeto unifica dois projetos de assinatura digital da SILIC:
+- **digital-signer** (v1.0.0) - Implementação em HTML/CSS/JS tradicional
+- **digital-signer-modern** (v2.0.0) - Implementação moderna com TypeScript
 
-> 📝 **Nota:** Este é um protótipo para demonstração. Em ambiente de produção, seria integrado com APIs reais de assinatura digital e certificação.
-> 
-> 🔗 **Integração:** O botão "Voltar ao Portal de Imóveis" redireciona automaticamente para o portal principal.
+O resultado é uma aplicação moderna com TypeScript + Vite + SCSS, mantendo todas as funcionalidades e melhorias de acessibilidade de ambos os projetos.
 
-## 🌟 Características
+## ✨ Funcionalidades
 
-### ✅ Acessibilidade (WCAG 2.1 AA)
-- Navegação por teclado completa
-- Suporte a leitores de tela
-- Alto contraste disponível
-- Focus management adequado
-- Textos alternativos em imagens
-- Estrutura semântica correta
+- 🔐 **Assinatura Digital Segura** - Suporte a certificados digitais A1 e A3
+- 📄 **Múltiplos Documentos** - Assine vários documentos de uma vez
+- 🌐 **Internacionalização** - Suporte a múltiplos idiomas
+- ♿ **Acessibilidade** - Seguindo padrões WCAG 2.1
+- 📱 **Responsivo** - Interface adaptável para todos os dispositivos
+- 🛡️ **Segurança** - Headers de segurança e validação robusta
+- ⚡ **Performance** - Build otimizado com Vite e code splitting
+- 🧪 **Qualidade** - Linting, testes e análise de código
 
-### 🌍 Internacionalização (i18n)
-- Suporte a múltiplos idiomas (PT-BR, EN-US, ES-ES)
-- Detecção automática do idioma do navegador
-- Formatação localizada de datas e números
-- Mensagens de erro traduzidas
+## 🛠️ Tecnologias
 
-### 📱 Design Responsivo
-- Mobile-first approach
-- Breakpoints otimizados
-- Touch-friendly interfaces
-- Viewport adaptativo
+- **TypeScript** - Tipagem estática e desenvolvimento mais seguro
+- **Vite** - Build tool moderna e rápida
+- **SCSS** - CSS com superpoderes
+- **ESLint + Prettier** - Qualidade e consistência do código
+- **Vitest** - Framework de testes unitários
+- **Playwright** - Testes end-to-end
+- **PWA** - Progressive Web App com service worker
 
-### 🚀 Performance
-- Lazy loading de recursos
-- Compressão de assets
-- Cache estratégico
-- Métricas de performance
+## 📋 Pré-requisitos
 
-### 🔒 Segurança
-- Content Security Policy (CSP)
-- Sanitização de inputs
-- Validação client-side e server-side
-- Headers de segurança
+- Node.js >= 18.0.0
+- npm >= 9.0.0
 
-### 🧪 Qualidade de Código
-- ESLint para JavaScript
-- Stylelint para CSS
-- HTML Validator
-- Testes automatizados
+## 🚀 Instalação e Execução
 
-## 🏗️ Estrutura do Projeto
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/osvaldojeronymo/silic.git
+   cd silic/digital-signer-unified
+   ```
 
-```
-silic-digital-signer/
-├── index.html              # Página principal
-├── package.json            # Configurações do projeto
-├── README.md              # Documentação
-├── .eslintrc.js           # Configuração ESLint
-├── .stylelintrc.js        # Configuração Stylelint
-├── assets/                # Recursos estáticos
-│   └── image/
-│       └── logo-caixa.svg
-├── css/                   # Estilos
-│   └── style.css          # CSS principal com variáveis CSS
-├── js/                    # Scripts
-│   ├── script.js          # Script principal
-│   ├── i18n.js           # Internacionalização
-│   ├── utils.js          # Utilitários
-│   └── validation.js     # Validação de formulários
-├── dist/                  # Build de produção (gerado)
-├── reports/              # Relatórios de análise (gerado)
-└── docs/                 # Documentação adicional
-```
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-## 🚀 Como Executar
+3. **Execute o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
 
-### Pré-requisitos
-- Node.js 16+ 
-- npm 8+
+4. **Acesse a aplicação:**
+   ```
+   http://localhost:3000
+   ```
 
-### Instalação
-```bash
-# Clone o repositório
-git clone https://github.com/caixa/silic-digital-signer.git
-
-# Entre no diretório
-cd silic-digital-signer
-
-# Instale as dependências
-npm install
-```
+## 📜 Scripts Disponíveis
 
 ### Desenvolvimento
-```bash
-# Servidor de desenvolvimento com live reload
-npm run dev
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run preview` - Preview da build de produção
+- `npm run serve` - Servidor da build de produção na porta 3000
 
-# Ou servidor HTTP simples
-npm start
+### Build
+- `npm run build` - Gera a build de produção
+- `npm run analyze` - Analisa o bundle de produção
+
+## 🌐 Deploy (GitHub Pages)
+
+O deploy é automatizado via GitHub Actions (`.github/workflows/deploy.yml`). Ao fazer push no branch `feature/unified-v3` (durante a fase de migração) ou `main` (após merge), a action:
+
+1. Instala dependências (`npm ci`)
+2. Executa a build (`npm run build`)
+3. Publica o conteúdo de `dist` no GitHub Pages
+
+URL de produção: https://osvaldojeronymo.github.io/silic-digital-signer/
+
+O arquivo `vite.config.ts` define `base: '/silic-digital-signer/'`, garantindo caminhos corretos em produção.
+
+### Testar build localmente
+```bash
+npm run build
+npx serve dist
 ```
 
-### Build de Produção
+### Problemas comuns
+- Página sem estilos: verifique se a base está correta e se o deploy apontou para a pasta `dist`.
+- 404 em refresh: usar rotas relativas (SPA simples) ou fallback manual.
+- Cache antigo: forçar refresh (Ctrl+F5) ou rodar novamente o workflow.
+
+### Deploy manual (fallback)
+Gerar build e subir artefato manualmente:
 ```bash
-# Gerar build otimizado
 npm run build
 ```
+Depois, na aba Pages do repositório, selecionar GitHub Actions como fonte (já configurado pela action).
 
-### Testes e Qualidade
-```bash
-# Executar todos os testes
-npm test
 
-# Linting e formatação
-npm run lint
+### Qualidade de Código
+- `npm run lint` - Executa todos os linters
+- `npm run lint:ts` - Linting do TypeScript
+- `npm run lint:css` - Linting do CSS/SCSS
+- `npm run lint:html` - Validação do HTML
+- `npm run format` - Formata o código com Prettier
 
-# Análise de acessibilidade
-npm run test:accessibility
+### Testes
+- `npm run test` - Executa todos os testes
+- `npm run test:unit` - Testes unitários com Vitest
+- `npm run test:e2e` - Testes end-to-end com Playwright
 
-# Auditoria de performance com Lighthouse
-npm run lighthouse
+### Análise
+- `npm run lighthouse` - Relatório Lighthouse de performance
+
+## 📁 Estrutura do Projeto
+
+```
+digital-signer-unified/
+├── public/                 # Arquivos estáticos
+│   └── assets/
+│       └── images/        # Imagens e ícones
+├── src/
+│   ├── components/        # Componentes da aplicação
+│   │   └── AppComponent.ts
+│   ├── styles/           # Estilos SCSS
+│   │   ├── main.scss     # Arquivo principal de estilos
+│   │   ├── _variables.scss
+│   │   ├── _base.scss
+│   │   └── components/   # Estilos dos componentes
+│   ├── types/            # Definições de tipos TypeScript
+│   ├── utils/            # Utilitários e helpers
+│   │   ├── i18n.ts       # Internacionalização
+│   │   ├── validation.ts # Validação de formulários
+│   │   └── index.ts      # Utilitários gerais
+│   └── main.ts           # Ponto de entrada da aplicação
+├── index.html            # Template HTML principal
+├── package.json          # Dependências e scripts
+├── tsconfig.json         # Configuração TypeScript
+├── vite.config.ts        # Configuração Vite
+├── .eslintrc.json        # Configuração ESLint
+├── .prettierrc.json      # Configuração Prettier
+├── .stylelintrc.yml      # Configuração Stylelint
+└── README.md
 ```
 
-## 📋 Funcionalidades Implementadas
+## 🔧 Configuração
 
-### Core Features
-- [x] Upload de documentos (PDF, DOCX, TXT)
-- [x] Validação de formulários em tempo real
-- [x] Assinatura digital simulada
-- [x] Download de documentos assinados
-- [x] Feedback visual de progresso
+### Certificados Digitais
 
-### UX/UI Features
-- [x] Loading states
-- [x] Error handling robusto
-- [x] Alertas contextuais
-- [x] Animações suaves
-- [x] Dark mode support (via CSS custom properties)
+O sistema suporta certificados digitais A1 (software) e A3 (hardware/token). Para configurar:
 
-### Technical Features
-- [x] Progressive Web App (PWA) ready
-- [x] Service Worker para cache
-- [x] Offline support básico
-- [x] Analytics tracking
-- [x] Error monitoring
-- [x] Performance monitoring
+1. Instale os drivers do seu certificado
+2. Configure o middleware adequado
+3. Teste a conectividade no portal
 
-## 🎯 Melhores Práticas Implementadas
+### Internacionalização
 
-### HTML
-- Estrutura semântica com ARIA
-- Meta tags completas (SEO, Open Graph)
-- Preload de recursos críticos
-- Favicon otimizado
+Para adicionar novos idiomas:
 
-### CSS
-- CSS Custom Properties (variáveis)
-- Metodologia BEM implícita
-- Mobile-first responsive design
-- Suporte a prefer-reduced-motion
-- Print styles
-
-### JavaScript
-- Módulos ES6
-- Async/await patterns
-- Error boundaries
-- Event delegation
-- Debouncing para performance
-
-### Acessibilidade
-- Skip links
-- ARIA labels e roles
-- Focus management
-- Keyboard navigation
-- Screen reader support
-
-### Performance
-- Resource hints (preload, prefetch)
-- Image optimization
-- Bundle splitting
-- Tree shaking ready
-
-### Segurança
-- Input sanitization
-- XSS protection
-- CSRF tokens ready
-- Secure headers
-
-## 🔧 Configuração para Produção
-
-### Variáveis de Ambiente
-```bash
-NODE_ENV=production
-API_ENDPOINT=https://api.silic.caixa.gov.br
-SENTRY_DSN=your-sentry-dsn
-ANALYTICS_ID=your-analytics-id
-```
-
-### Headers de Segurança Recomendados
-```
-Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-X-XSS-Protection: 1; mode=block
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-```
-
-## 🧪 Testes
-
-### Testes Automatizados
-- HTML validation
-- CSS linting
-- JavaScript linting
-- Accessibility testing (pa11y)
-- Performance testing (Lighthouse)
-
-### Testes Manuais Recomendados
-- [ ] Navegação por teclado
-- [ ] Leitores de tela (NVDA, JAWS)
-- [ ] Dispositivos móveis
-- [ ] Diferentes navegadores
-- [ ] Conexões lentas
-
-## 📊 Métricas de Performance
-
-### Targets de Performance
-- First Contentful Paint: < 1.5s
-- Largest Contentful Paint: < 2.5s
-- First Input Delay: < 100ms
-- Cumulative Layout Shift: < 0.1
-
-### Lighthouse Score Targets
-- Performance: > 90
-- Accessibility: 100
-- Best Practices: > 90
-- SEO: > 90
-
-## 🔄 Roadmap de Melhorias
-
-### Fase 2 - Angular Migration
-- [ ] Migração para Angular 16+
-- [ ] Component architecture
-- [ ] State management (NgRx)
-- [ ] Angular Material UI
-- [ ] Lazy loading routes
-
-### Fase 3 - Backend Integration
-- [ ] Node.js + Express API
-- [ ] Java microservices
-- [ ] Database integration
-- [ ] Real digital signature
-- [ ] Certificate management
-
-### Fase 4 - Advanced Features
-- [ ] Multi-document signing
-- [ ] Batch processing
-- [ ] Digital certificate upload
-- [ ] Audit trail
-- [ ] Advanced analytics
+1. Edite `src/utils/i18n.ts`
+2. Adicione as traduções necessárias
+3. Configure o idioma padrão
 
 ## 🤝 Contribuição
 
 1. Fork o projeto
-2. Crie sua feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add: Amazing Feature'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+## 📝 Convenções de Código
+
+- **TypeScript** - Tipagem obrigatória para todas as funções
+- **ESLint** - Seguir as regras configuradas
+- **Prettier** - Formatação automática
+- **Commits** - Usar conventional commits
+- **CSS** - Usar BEM methodology para classes
+
+## 🛡️ Segurança
+
+- Headers de segurança configurados
+- Validação de entrada em todos os formulários  
+- Sanitização de dados
+- Content Security Policy ativo
+- Certificados validados server-side
+
+## 📊 Performance
+
+- Code splitting automático
+- Lazy loading de componentes
+- Compressão gzip/brotli
+- Service Worker para cache
+- Bundle analysis disponível
+
 ## 📄 Licença
 
-Este projeto é propriedade da CAIXA e está licenciado sob os termos internos da organização.
+Este projeto é propriedade da CAIXA - SILIC 2.0 Team.
+
+## 👥 Equipe
+
+- **CAIXA - SILIC 2.0 Team**
+- **Desenvolvedor:** Osvaldo Jerônimo
 
 ## 📞 Suporte
 
-Para suporte técnico, entre em contato:
-- Email: silic-suporte@caixa.gov.br
-- Slack: #silic-2-0
-- Wiki: https://wiki.caixa.gov.br/silic
+- **Issues:** [GitHub Issues](https://github.com/osvaldojeronymo/silic/issues)
+- **Documentação:** [Wiki do Projeto](https://github.com/osvaldojeronymo/silic/wiki)
+- **Email:** silic@caixa.gov.br
 
 ---
 
-**CAIXA - SILIC 2.0** | Construindo o futuro da assinatura digital
+**SILIC 2.0** - Sistema Integrado de Logística Imobiliária da Caixa
