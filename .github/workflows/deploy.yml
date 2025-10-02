@@ -5,6 +5,7 @@ on:
     branches:
       - feature/unified-v3
       - main
+      - temp-unified
   workflow_dispatch:
 
 permissions:
