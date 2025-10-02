@@ -7,11 +7,9 @@ import './styles/main.scss';
 import { i18n } from './utils/i18n';
 import { FormValidator } from './utils/validation';
 import { Utils } from './utils';
-import { AppComponent } from './components/AppComponent';
 import type { DocumentInfo, SignatureData } from './types';
 
 class SilicDigitalSigner {
-  private appComponent: AppComponent | null = null;
   private formValidator: FormValidator | null = null;
   private currentDocument: DocumentInfo | null = null;
   private uploadProgress: HTMLElement | null = null;
@@ -42,15 +40,24 @@ class SilicDigitalSigner {
   }
 
   private setupApp(): void {
-    // Get app container and render the application
-    const appContainer = document.getElementById('app');
-    if (!appContainer) {
-      throw new Error('App container not found');
+    console.log('🎨 Configurando aplicação...');
+    
+    // Initialize with existing HTML structure
+    this.initializeComponents();
+    
+    console.log('✅ Aplicação configurada com sucesso!');
+  }
+  
+  private initializeComponents(): void {
+    // Get the form element
+    const formElement = document.getElementById('signForm') as HTMLFormElement;
+    if (formElement) {
+      this.formValidator = new FormValidator(formElement);
     }
-
-    // Create and render the main app component
-    this.appComponent = new AppComponent(appContainer);
-    this.appComponent.render();
+    
+    // Get important elements
+    this.uploadProgress = document.getElementById('loading');
+    this.statusMessage = document.getElementById('alert-container');
 
     // Setup application functionality
     this.setupFormValidation();
@@ -58,6 +65,8 @@ class SilicDigitalSigner {
     this.setupEventListeners();
     this.setupAccessibility();
     this.updateUI();
+    
+    console.log('🔧 Componentes inicializados');
   }
 
   private setupFormValidation(): void {

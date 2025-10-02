@@ -16,6 +16,20 @@ export class I18nManager {
     // Main content
     'page-title': 'Portal de Assinatura Digital',
     'page-description': 'Assine seus documentos de forma segura e digital com certificação válida.',
+    'portal-title': 'Portal de Assinatura Digital',
+    'portal-description': 'Assine seus documentos de forma segura e digital com certificação válida.',
+    'select-documents': 'Selecione os documentos:',
+    'doc-help': 'Formatos aceitos: PDF, DOCX, TXT (máximo 10MB por arquivo, até 10 arquivos)',
+    'signers': 'Signatários:',
+    'signers-help': 'Adicione todos os signatários que devem assinar os documentos. Mínimo 1, máximo 10 signatários.',
+    'sign-button': 'Iniciar Processo de Assinatura',
+    'result-title': 'Resultado da Assinatura',
+    'download-document': 'Baixar Documento Assinado',
+    'new-signature': 'Nova Assinatura',
+    'prototype': 'Protótipo',
+    'privacy-policy': 'Política de Privacidade',
+    'terms-of-use': 'Termos de Uso',
+    'help': 'Ajuda',
     
     // Document upload
     'upload-title': 'Selecionar Documento',
